@@ -1,5 +1,8 @@
 from ui.chat_interface import build_interface
 from config import download_vector_store_if_needed
+import pysqlite3
+
+sys.modules['sqlite3'] = pysqlite3
 
 def main():
     """
