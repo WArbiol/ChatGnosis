@@ -23,6 +23,8 @@ Uma aplicação inteligente de Q&A que permite conversar com uma grande coleçã
 
 ![Image](https://github.com/user-attachments/assets/1e5b1765-30c7-4cc4-8a5f-03a232c49b70)
 
+&rarr; Acesse o site: [https://chatgnosis.streamlit.app/](https://chatgnosis.streamlit.app/)
+
 ---
 
 ## 💡 Sobre o Projeto
