@@ -1,5 +1,4 @@
 import chromadb
-from sentence_transformers import SentenceTransformer
 from config import VECTOR_STORE_DIR, EMBEDDING_MODEL_NAME
 import streamlit as st
 from google import genai
