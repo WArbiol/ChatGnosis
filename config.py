@@ -2,7 +2,7 @@ import os
 from huggingface_hub import snapshot_download
 from pathlib import Path
 
-EMBEDDING_MODEL_NAME = "BAAI/bge-m3"
+EMBEDDING_MODEL_NAME = "models/text-embedding-004"
 
 BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR / "data"
