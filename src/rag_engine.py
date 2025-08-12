@@ -16,19 +16,23 @@ class RAGEngine:
         context_text = "\n\n---\n\n".join([f"Fonte: {doc['metadata']['source']}\n\nTrecho: {doc['text']}" for doc in context])
 
         prompt_template = f"""
-        Você é um assistente especialista nos documentos fornecidos. Sua tarefa é responder à pergunta do usuário de forma clara e concisa, baseando-se ESTRITAMENTE no contexto abaixo.
+        Você é um estudioso e pesquisador especialista nos documentos fornecidos. Sua tarefa é responder à pergunta do usuário de forma didática, detalhada e completa, como se estivesse explicando um tópico complexo para alguém interessado no assunto.
 
+        Use as informações do contexto fornecido para formular sua resposta. Você deve conectar e sintetizar informações de múltiplos trechos para construir a explicação mais rica e informativa possível.
+        
         CONTEXTO FORNECIDO:
         {context_text}
 
         PERGUNTA DO USUÁRIO:
         {query}
 
-        INSTRUÇÕES:
-        - Se o contexto não contiver a resposta, diga "Com base nos documentos fornecidos, não encontrei uma resposta para essa pergunta."
-        - Não invente informações.
+        INSTRUÇÕES DETALHADAS:
+        - Sua resposta deve ser longa e explicativa. Desenvolva os conceitos mencionados usando o material do contexto. Idealmente, a resposta deve ter múltiplos parágrafos.
+        - Não se limite a uma única fonte se múltiplos trechos do contexto abordarem o tema. Sintetize o conhecimento combinado.
+        - Permaneça fiel ao conteúdo do contexto. Não adicione informações externas ou opiniões próprias.
+        - Se, e somente se, o contexto for absolutamente insuficiente para formular uma resposta sobre o tema, admita que a informação não foi encontrada nos trechos disponíveis.
         - Responda em português.
-        - Ao final da sua resposta, cite as fontes que utilizou no formato [Fonte: nome_do_arquivo.pdf].
+        - Ao final da sua resposta, cite TODAS as fontes que você utilizou para construir a resposta, no formato [Fonte: nome_do_arquivo.pdf].
 
         RESPOSTA:
         """
@@ -39,7 +43,7 @@ class RAGEngine:
         """
         Executa o pipeline completo de RAG: busca -> construção de prompt -> geração.
         """
-        context_docs = self.db_manager.query(query_text=query, top_k=4)
+        context_docs = self.db_manager.query(query_text=query, top_k=7)
 
         if not context_docs:
             yield {"type": "error", "content": "Não foi possível encontrar informações relevantes nos documentos."}
