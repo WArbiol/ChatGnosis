@@ -10,3 +10,4 @@ google-genai
 huggingface_hub
 litellm
 fastapi
+pysqlite3-binary
