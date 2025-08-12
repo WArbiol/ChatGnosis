@@ -5,15 +5,23 @@
 [![Google Gemini API](https://img.shields.io/badge/Google_Gemini-API-4285F4.svg)](https://ai.google.dev/)
 [![Licença: MIT](https://img.shields.io/badge/Licença-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+- LLMs (Large Language Models)
+- Busca Vetorial (Vector Search)
+- Bancos de Dados Vetoriais (ChromaDB)
+- Engenharia de Prompt (Prompt Engineering)
+- Hugging Face Hub
+- Deploy em Nuvem (Serverless)
+- Streamlit
+
+---
+
 Uma aplicação inteligente de Q&A que permite conversar com uma grande coleção de documentos PDF, utilizando um pipeline de **Retrieval-Augmented Generation (RAG)** para fornecer respostas fiéis, rápidas e com fontes citadas, com todo o processamento de IA executado na nuvem.
 
 ---
 
 ## 🎥 Demonstração
 
-**(Recomendação Fortíssima: Grave um GIF curto da sua aplicação em funcionamento e coloque aqui. Use ferramentas como ScreenToGif ou Kap. Um GIF é a forma mais rápida e impactante de mostrar o valor do seu projeto!)**
-
-![Placeholder para o GIF da aplicação](https://i.imgur.com/your-gif-placeholder.gif)
+![Image](https://github.com/user-attachments/assets/1e5b1765-30c7-4cc4-8a5f-03a232c49b70)
 
 ---
 
