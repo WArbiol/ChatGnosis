@@ -1,0 +1,22 @@
+# .streamlit/config.toml
+
+[theme]
+# O tema base. Pode ser "light" ou "dark".
+base = "dark"
+
+# Cor de fundo principal da aplicação.
+backgroundColor = "#0f1116"
+
+# Cor de fundo para elementos como a sidebar e expanders.
+secondaryBackgroundColor = "#1c1f2b"
+
+# Cor principal do texto.
+textColor = "#ffffff"
+
+# Cor dos acentos e widgets interativos (botões, sliders, etc.).
+# AQUI VAI O NOSSO AZUL!
+primaryColor = "#3b82f6"
+
+# A família de fontes a ser usada.
+# Pode ser "sans serif", "serif", ou "monospace".
+font = "sans serif"

@@ -1,0 +1,13 @@
+venv/
+
+__pycache__/
+*.pyc
+
+.cache/
+
+data/vector_store/
+
+.streamlit/secrets.toml
+
+.vscode/
+.idea/
