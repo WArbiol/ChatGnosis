@@ -53,7 +53,7 @@ def build_interface():
         st.session_state.messages = []
 
     st.title("Chat Gnosis 💎")
-    st.info("Olá! Sou seu assistente de pesquisa Gnóstica, posso cometer erros então sempre leia as Fontes dos Mestre :-)")
+    st.info("Olá! Sou seu assistente de pesquisa Gnóstica. Posso cometer erros, sempre leia as Fontes dos Mestres.")
 
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):

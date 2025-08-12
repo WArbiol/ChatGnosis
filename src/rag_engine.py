@@ -1,12 +1,13 @@
-import google.generativeai as genai
+from litellm.google_genai import generate_content_stream
+from google.genai.types import ContentDict, PartDict
 from src.vector_db_manager import VectorDBManager
 import streamlit as st
+import json
 
 class RAGEngine:
     def __init__(self):
         self.db_manager = VectorDBManager()
-        genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
-        self.model = genai.GenerativeModel('gemini-2.5-flash')
+        self.api_key = st.secrets["GOOGLE_API_KEY"]
 
     def _build_prompt(self, query: str, context: list[dict]) -> str:
         """
@@ -32,6 +33,7 @@ class RAGEngine:
         RESPOSTA:
         """
         return prompt_template
+    
 
     def query_stream(self, query: str):
         """
@@ -45,13 +47,26 @@ class RAGEngine:
         
         prompt = self._build_prompt(query, context_docs)
 
-        try:
-            stream = self.model.generate_content(prompt, stream=True)
+        contents = ContentDict(parts=[PartDict(text=prompt)], role="user")
 
+        try:
+            stream = generate_content_stream(
+                model="gemini/gemini-2.0-flash",  # ou "gemini/gemini-1.5-flash" se preferir
+                contents=contents,
+                max_output_tokens=1500,
+                api_key=self.api_key
+            )
+
+            # 5. Itera sobre cada pedaço recebido
             for chunk in stream:
-                yield {"type": "response_chunk", "content": chunk.text}
-            
+                data = json.loads(chunk[len(b"data: "):])
+                if "candidates" in data:
+                    text = data["candidates"][0]["content"]["parts"][0].get("text", "")
+                    if text:
+                        yield {"type": "response_chunk", "content": text}
+
+            # 6. Ao final, retorna também as fontes
             yield {"type": "sources", "content": context_docs}
 
         except Exception as e:
-            yield {"type": "error", "content": f"Erro ao contatar a API do Google: {e}"}
+            yield {"type": "error", "content": f"Erro ao contatar a API do Google via LiteLLM: {e}"}
